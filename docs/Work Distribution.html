@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Dataset and Preprocessing &#8212; Health and Diet</title>
+    <title>Work Distribution &#8212; Health and Diet</title>
   
   
   
@@ -57,12 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Dataset and Preprocessing';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Work Distribution';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Datastory" href="notebook.html" />
-    <link rel="prev" title="Introduction" href="home.html" />
+    <link rel="prev" title="Datastory" href="notebook.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,8 +172,10 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dataset and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dataset%20and%20Preprocessing.html">Dataset and Preprocessing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebook.html">Datastory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Work Distribution</a></li>
+
 </ul>
 
     </div>
@@ -229,7 +230,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/NilliNoori/infovisu/blob/main/docs/docs/Dataset and Preprocessing.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/NilliNoori/infovisu/blob/main/docs/docs/Work Distribution.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +278,7 @@
       
       
       
-      <li><a href="https://github.com/NilliNoori/infovisu/issues/new?title=Issue%20on%20page%20%2Fdocs/Dataset and Preprocessing.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NilliNoori/infovisu/issues/new?title=Issue%20on%20page%20%2Fdocs/Work Distribution.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +308,7 @@
       
       
       
-      <li><a href="../_sources/docs/Dataset and Preprocessing.ipynb" target="_blank"
+      <li><a href="../_sources/docs/Work Distribution.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,7 +392,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Dataset and Preprocessing</h1>
+    <h1>Work Distribution</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -401,17 +402,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-phase-renaming-and-restructuring-columns">First Phase: Renaming and Restructuring Columns</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-phase-merging-and-normalizing">Second Phase: Merging and Normalizing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#third-phase-selecting-relevant-variables">Third Phase: Selecting Relevant Variables</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Work Distribution</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nilli">Nilli</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naritsarakon">Naritsarakon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kate">Kate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#talisha">Talisha</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-descriptions">Variable Descriptions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregations">Aggregations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-result">Final Result</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#collaboration">Collaboration</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -422,56 +422,126 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="dataset-and-preprocessing">
-<h1>Dataset and Preprocessing<a class="headerlink" href="#dataset-and-preprocessing" title="Link to this heading">#</a></h1>
-<section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading">#</a></h2>
+  <section id="work-distribution">
+<h1>Work Distribution<a class="headerlink" href="#work-distribution" title="Link to this heading">#</a></h1>
+<section id="nilli">
+<h2>Nilli<a class="headerlink" href="#nilli" title="Link to this heading">#</a></h2>
+<p><strong>Role: Project Coordinator and Data Specialist</strong></p>
 <ul class="simple">
-<li><p><strong>Data Cleaning</strong></p></li>
-<li><p><strong>Variable Descriptions</strong></p></li>
-<li><p><strong>Aggregations</strong></p></li>
+<li><p><strong>Data Collection and Cleaning</strong>:</p>
+<ul>
+<li><p>Collect and clean datasets from various sources for the years covered in the study.</p></li>
+<li><p>Ensure data accuracy and consistency across all years.</p></li>
+</ul>
+</li>
+<li><p><strong>Data Merging</strong>:</p>
+<ul>
+<li><p>Merge datasets into a single comprehensive dataset.</p></li>
+</ul>
+</li>
+<li><p><strong>Graph Creation</strong>:</p>
+<ul>
+<li><p>Assist in the initial creation of visualizations.</p></li>
+</ul>
+</li>
+<li><p><strong>Documentation</strong>:</p>
+<ul>
+<li><p>Take notes during meetings and maintain a clear overview of everyone’s responsibilities.</p></li>
+</ul>
+</li>
 </ul>
 </section>
-<section id="data-cleaning">
-<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
-<p>We researched online and found the <a class="reference external" href="https://globalnutritionreport.org/reports/2021-global-nutrition-report/dataset-and-metadata/">Global Nutrition Report 2021 - Dataset and Metadata</a>
-, which included multiple datasets in the file <code class="docutils literal notranslate"><span class="pre">2021_Global_Nutrition_Report_Dataset_6YAamkd.xlsx</span></code>. From this report, we selected and merged the following relevant datasets: <code class="docutils literal notranslate"><span class="pre">country_dietary_needs.xlsx</span></code>, <code class="docutils literal notranslate"><span class="pre">country_economics.xlsx</span></code>, <code class="docutils literal notranslate"><span class="pre">country_adult.xlsx</span></code>, and <code class="docutils literal notranslate"><span class="pre">country_policy.xlsx</span></code>.  These datasets provide comprehensive information on dietary needs, economic and demographic data, adult obesity rates and policy measures for various countries.</p>
-<section id="first-phase-renaming-and-restructuring-columns">
-<h3>First Phase: Renaming and Restructuring Columns<a class="headerlink" href="#first-phase-renaming-and-restructuring-columns" title="Link to this heading">#</a></h3>
-<p>In the first phase, we addressed column conflicts by adding unique suffixes to the columns of each dataset. This ensured that there were no conflicting column names during the merge. We then read each dataset separately using the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library in Python.</p>
-</section>
-<section id="second-phase-merging-and-normalizing">
-<h3>Second Phase: Merging and Normalizing<a class="headerlink" href="#second-phase-merging-and-normalizing" title="Link to this heading">#</a></h3>
-<p>In the second phase, we merged the datasets based on the common column<code class="docutils literal notranslate"><span class="pre">country</span></code>. To remove duplicates and normalize the data, we aggregated numerical columns by taking their means and retained the first value for categorical columns. This allowed us to obtain a single row per country, containing all relevant merged information.</p>
-</section>
-<section id="third-phase-selecting-relevant-variables">
-<h3>Third Phase: Selecting Relevant Variables<a class="headerlink" href="#third-phase-selecting-relevant-variables" title="Link to this heading">#</a></h3>
-<p>In the third phase, we focused on selecting only the relevant variables that align with our perspectives and arguments. This involved filtering the dataset to retain columns that provide insights into dietary habits, national policies, consumption of processed foods, and socio-economic factors. The selected columns were then saved into a new cleaned dataset.</p>
-</section>
-</section>
-<section id="variable-descriptions">
-<h2>Variable Descriptions<a class="headerlink" href="#variable-descriptions" title="Link to this heading">#</a></h2>
-<p>The final dataset includes a wide range of variables, including:</p>
+<section id="naritsarakon">
+<h2>Naritsarakon<a class="headerlink" href="#naritsarakon" title="Link to this heading">#</a></h2>
+<p><strong>Role: Data Analyst and Presenter</strong></p>
 <ul class="simple">
-<li><p><strong>Dietary-related variables</strong>: such as <code class="docutils literal notranslate"><span class="pre">fruit_dietary_intake</span></code>, <code class="docutils literal notranslate"><span class="pre">vegetables_dietary_intake</span></code>, <code class="docutils literal notranslate"><span class="pre">legumes_dietary_intake</span></code>, <code class="docutils literal notranslate"><span class="pre">nuts_dietary_intake</span></code>, <code class="docutils literal notranslate"><span class="pre">whole_grains_dietary_intake</span></code>, <code class="docutils literal notranslate"><span class="pre">fish_dietary_intake</span></code>, <code class="docutils literal notranslate"><span class="pre">dairy_dietary_intake</span></code>, <code class="docutils literal notranslate"><span class="pre">red_meat_dietary_intake</span></code>.</p></li>
-<li><p><strong>Economic and demographic variables</strong>: such as <code class="docutils literal notranslate"><span class="pre">gdp_per_capita_mean_2011_2021</span></code>.</p></li>
-<li><p><strong>Adult-obesity variables</strong>: such as <code class="docutils literal notranslate"><span class="pre">obesity_mean_2011_2016</span></code>, <code class="docutils literal notranslate"><span class="pre">overweight_mean_2011_2016</span></code>, <code class="docutils literal notranslate"><span class="pre">underweight_mean_2011_2016</span></code>, <code class="docutils literal notranslate"><span class="pre">blood_pressure_mean_2011_2015</span></code>, <code class="docutils literal notranslate"><span class="pre">Risk_factor_obese_2018</span></code>.</p></li>
-<li><p><strong>Policy-related variables</strong>: such as policy measures like <code class="docutils literal notranslate"><span class="pre">salt_legislation_policy</span></code>.</p></li>
+<li><p><strong>Data Analysis</strong>:</p>
+<ul>
+<li><p>Conduct detailed data analysis to uncover trends and insights related to economic prosperity, dietary habits, and health outcomes.</p></li>
+</ul>
+</li>
+<li><p><strong>Visualization</strong>:</p>
+<ul>
+<li><p>Develop and refine graphs to effectively communicate the findings.</p></li>
+</ul>
+</li>
+<li><p><strong>Storyline Development</strong>:</p>
+<ul>
+<li><p>Collaborate with Kate to develop a coherent and compelling narrative for the data story.</p></li>
+</ul>
+</li>
+<li><p><strong>Presentation</strong>:</p>
+<ul>
+<li><p>Present the project during peer reviews and feedback sessions.</p></li>
+</ul>
+</li>
 </ul>
 </section>
-<section id="aggregations">
-<h2>Aggregations<a class="headerlink" href="#aggregations" title="Link to this heading">#</a></h2>
-<p>The data was aggregated at the country level to obtain a single record per country. For numerical values, we calculated the means, while for categorical values, we retained the first non-null value. This ensured that the final dataset is comprehensive and cohesive, ready for further analysis and visualization.</p>
-<p>For example:</p>
+<section id="kate">
+<h2>Kate<a class="headerlink" href="#kate" title="Link to this heading">#</a></h2>
+<p><strong>Role: Researcher and Storyline Developer</strong></p>
 <ul class="simple">
-<li><p><strong>Numerical aggregation</strong>: For columns like <code class="docutils literal notranslate"><span class="pre">fruit_dietary_intake</span></code> and <code class="docutils literal notranslate"><span class="pre">vegetables_dietary_intake</span></code>, we calculated the mean.</p></li>
-<li><p><strong>Categorical aggregation</strong>: For policy information like <code class="docutils literal notranslate"><span class="pre">salt_legislation_policy</span></code>, we retained the first non-null value.</p></li>
+<li><p><strong>Literature Review</strong>:</p>
+<ul>
+<li><p>Conduct a comprehensive review of existing research to support the data story.</p></li>
+<li><p>Identify relevant studies and papers that highlight the impact of economic factors on dietary habits and health outcomes.</p></li>
+</ul>
+</li>
+<li><p><strong>Storyline Development</strong>:</p>
+<ul>
+<li><p>Take the lead in crafting the initial draft of the narrative.</p></li>
+<li><p>Ensure the storyline is supported by data and research findings.</p></li>
+</ul>
+</li>
+<li><p><strong>Graph Refinement</strong>:</p>
+<ul>
+<li><p>Work on improving the visualizations for clarity and impact.</p></li>
+</ul>
+</li>
 </ul>
 </section>
-<section id="final-result">
-<h2>Final Result<a class="headerlink" href="#final-result" title="Link to this heading">#</a></h2>
-<p>The resulting dataset provides a comprehensive view of various aspects of dietary and policy information per country. This dataset is now primed for further analysis and visualization.</p>
+<section id="talisha">
+<h2>Talisha<a class="headerlink" href="#talisha" title="Link to this heading">#</a></h2>
+<p><strong>Role: Visualization Expert and Documentation Specialist</strong></p>
+<ul class="simple">
+<li><p><strong>Visualization</strong>:</p>
+<ul>
+<li><p>Take primary responsibility for creating and polishing the visual elements of the data story.</p></li>
+<li><p>Ensure all graphs and charts are clear, accurate, and visually appealing.</p></li>
+</ul>
+</li>
+<li><p><strong>Peer Feedback</strong>:</p>
+<ul>
+<li><p>Present the project during peer feedback sessions and incorporate suggestions for improvement.</p></li>
+</ul>
+</li>
+<li><p><strong>Work Distribution Documentation</strong>:</p>
+<ul>
+<li><p>Document the work distribution and ensure that all contributions are properly acknowledged.</p></li>
+</ul>
+</li>
+</ul>
 </section>
+</section>
+<section id="collaboration">
+<h1>Collaboration<a class="headerlink" href="#collaboration" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Seminars and Meetings</strong>:</p>
+<ul>
+<li><p>All team members will participate in regular seminars, meetings, and additional consultations to discuss progress, challenges, and next steps.</p></li>
+</ul>
+</li>
+<li><p><strong>Review and Refinement</strong>:</p>
+<ul>
+<li><p>Continuously review and refine both the data analysis and the narrative to ensure a high-quality final product.</p></li>
+</ul>
+</li>
+<li><p><strong>Final Presentation</strong>:</p>
+<ul>
+<li><p>Collaborate to prepare the final presentation, ensuring that each member’s contributions are highlighted.</p></li>
+</ul>
+</li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -505,22 +575,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="home.html"
+       href="notebook.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="notebook.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Datastory</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -538,17 +599,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-phase-renaming-and-restructuring-columns">First Phase: Renaming and Restructuring Columns</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-phase-merging-and-normalizing">Second Phase: Merging and Normalizing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#third-phase-selecting-relevant-variables">Third Phase: Selecting Relevant Variables</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Work Distribution</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nilli">Nilli</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naritsarakon">Naritsarakon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kate">Kate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#talisha">Talisha</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-descriptions">Variable Descriptions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregations">Aggregations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-result">Final Result</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#collaboration">Collaboration</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
