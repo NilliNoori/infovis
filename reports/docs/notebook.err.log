@@ -15,32 +15,62 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import pandas as pd
-import matplotlib.pyplot as plt
-import statsmodels.api as sm
-import seaborn as sns
-import plotly.express as px
+#Click to see code
+
+# Separate the data into two groups based on salt legislation policy
+with_policy = data[data['salt_legislation_policy'] == 'Yes']
+without_policy = data[data['salt_legislation_policy'] == 'No']
+
+# Calculate the mean values of the risk factors for each group
+risk_factors_with_policy = with_policy[['Risk_factor_obese_2018', 'Risk_factor_all-rf_2018']].mean()
+risk_factors_without_policy = without_policy[['Risk_factor_obese_2018', 'Risk_factor_all-rf_2018']].mean()
+
+# Combine the results into a single dataframe for comparison
+comparison = pd.DataFrame({
+    'With Policy': risk_factors_with_policy,
+    'Without Policy': risk_factors_without_policy
+})
+
+# Data for the plot
+obese_comparison_salt = comparison.loc['Risk_factor_obese_2018']
+
+# Create the interactive bar plot
+fig = go.Figure(data=[
+    go.Bar(name='With Policy', x=['With Policy'], y=[obese_comparison_salt['With Policy']], marker_color='blue'),
+    go.Bar(name='Without Policy', x=['Without Policy'], y=[obese_comparison_salt['Without Policy']], marker_color='red')
+])
+
+# Update layout for better visualization
+fig.update_layout(
+    title='Comparison of Deaths caused by Obesity with and without Salt Legislation Policy',
+    yaxis_title='Mean Amount of Deaths',
+    xaxis_title='Policy Status',
+    barmode='group',
+    xaxis_tickangle=0
+)
+
+# Show the interactive plot
+fig.show()
+
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mImportError[0m                               Traceback (most recent call last)
-Cell [0;32mIn[1], line 1[0m
-[0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
-[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mstatsmodels[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mas[39;00m [38;5;21;01msm[39;00m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[7], line 21[0m
+[1;32m     18[0m obese_comparison_salt [38;5;241m=[39m comparison[38;5;241m.[39mloc[[38;5;124m'[39m[38;5;124mRisk_factor_obese_2018[39m[38;5;124m'[39m]
+[1;32m     20[0m [38;5;66;03m# Create the interactive bar plot[39;00m
+[0;32m---> 21[0m fig [38;5;241m=[39m [43mgo[49m[38;5;241m.[39mFigure(data[38;5;241m=[39m[
+[1;32m     22[0m     go[38;5;241m.[39mBar(name[38;5;241m=[39m[38;5;124m'[39m[38;5;124mWith Policy[39m[38;5;124m'[39m, x[38;5;241m=[39m[[38;5;124m'[39m[38;5;124mWith Policy[39m[38;5;124m'[39m], y[38;5;241m=[39m[obese_comparison_salt[[38;5;124m'[39m[38;5;124mWith Policy[39m[38;5;124m'[39m]], marker_color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mblue[39m[38;5;124m'[39m),
+[1;32m     23[0m     go[38;5;241m.[39mBar(name[38;5;241m=[39m[38;5;124m'[39m[38;5;124mWithout Policy[39m[38;5;124m'[39m, x[38;5;241m=[39m[[38;5;124m'[39m[38;5;124mWithout Policy[39m[38;5;124m'[39m], y[38;5;241m=[39m[obese_comparison_salt[[38;5;124m'[39m[38;5;124mWithout Policy[39m[38;5;124m'[39m]], marker_color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mred[39m[38;5;124m'[39m)
+[1;32m     24[0m ])
+[1;32m     26[0m [38;5;66;03m# Update layout for better visualization[39;00m
+[1;32m     27[0m fig[38;5;241m.[39mupdate_layout(
+[1;32m     28[0m     title[38;5;241m=[39m[38;5;124m'[39m[38;5;124mComparison of Deaths caused by Obesity with and without Salt Legislation Policy[39m[38;5;124m'[39m,
+[1;32m     29[0m     yaxis_title[38;5;241m=[39m[38;5;124m'[39m[38;5;124mMean Amount of Deaths[39m[38;5;124m'[39m,
+[0;32m   (...)[0m
+[1;32m     32[0m     xaxis_tickangle[38;5;241m=[39m[38;5;241m0[39m
+[1;32m     33[0m )
 
-File [0;32m~/.local/lib/python3.10/site-packages/pandas/__init__.py:19[0m
-[1;32m     16[0m         _missing_dependencies[38;5;241m.[39mappend([38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00m_dependency[38;5;132;01m}[39;00m[38;5;124m: [39m[38;5;132;01m{[39;00m_e[38;5;132;01m}[39;00m[38;5;124m"[39m)
-[1;32m     18[0m [38;5;28;01mif[39;00m _missing_dependencies:  [38;5;66;03m# pragma: no cover[39;00m
-[0;32m---> 19[0m     [38;5;28;01mraise[39;00m [38;5;167;01mImportError[39;00m(
-[1;32m     20[0m         [38;5;124m"[39m[38;5;124mUnable to import required dependencies:[39m[38;5;130;01m\n[39;00m[38;5;124m"[39m [38;5;241m+[39m [38;5;124m"[39m[38;5;130;01m\n[39;00m[38;5;124m"[39m[38;5;241m.[39mjoin(_missing_dependencies)
-[1;32m     21[0m     )
-[1;32m     22[0m [38;5;28;01mdel[39;00m _hard_dependencies, _dependency, _missing_dependencies
-[1;32m     24[0m [38;5;28;01mtry[39;00m:
-[1;32m     25[0m     [38;5;66;03m# numpy compat[39;00m
-
-[0;31mImportError[0m: Unable to import required dependencies:
-numpy: No module named 'numpy'
-pytz: No module named 'pytz'
+[0;31mNameError[0m: name 'go' is not defined
 
