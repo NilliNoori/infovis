@@ -4,4 +4,6 @@
 format: jb-book
 root: docs/home
 chapters:
+- file: docs/Dataset and Preprocessing
 - file: docs/notebook
+- file: docs/Work Distribution
