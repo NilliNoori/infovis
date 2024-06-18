@@ -16,61 +16,112 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 #Click to see code
+# Creating a column to indicate whether a country has health policies (either salt legislation or trans fatty acids policy)
+data['health_policy'] = data.apply(lambda row: 'Yes' if row['salt_legislation_policy'] == 'Yes' or row['trans_fatty_acids_policy'] == 'Yes' else 'No', axis=1)
 
-# Separate the data into two groups based on salt legislation policy
-with_policy = data[data['salt_legislation_policy'] == 'Yes']
-without_policy = data[data['salt_legislation_policy'] == 'No']
-
-# Calculate the mean values of the risk factors for each group
-risk_factors_with_policy = with_policy[['Risk_factor_obese_2018', 'Risk_factor_all-rf_2018']].mean()
-risk_factors_without_policy = without_policy[['Risk_factor_obese_2018', 'Risk_factor_all-rf_2018']].mean()
-
-# Combine the results into a single dataframe for comparison
-comparison = pd.DataFrame({
-    'With Policy': risk_factors_with_policy,
-    'Without Policy': risk_factors_without_policy
-})
-
-# Data for the plot
-obese_comparison_salt = comparison.loc['Risk_factor_obese_2018']
-
-# Create the interactive bar plot
-fig = go.Figure(data=[
-    go.Bar(name='With Policy', x=['With Policy'], y=[obese_comparison_salt['With Policy']], marker_color='blue'),
-    go.Bar(name='Without Policy', x=['Without Policy'], y=[obese_comparison_salt['Without Policy']], marker_color='red')
-])
-
-# Update layout for better visualization
-fig.update_layout(
-    title='Comparison of Deaths caused by Obesity with and without Salt Legislation Policy',
-    yaxis_title='Mean Amount of Deaths',
-    xaxis_title='Policy Status',
-    barmode='group',
-    xaxis_tickangle=0
-)
-
-# Show the interactive plot
-fig.show()
-
+# Plotting GDP per capita against the presence of health policies
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=data, x='health_policy', y='gdp_per_capita_mean_2011_2021')
+plt.title('GDP per Capita vs Health Policies')
+plt.xlabel('Has Health Policies')
+plt.ylabel('GDP per Capita (Mean 2011-2021)')
+plt.show()
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[7], line 21[0m
-[1;32m     18[0m obese_comparison_salt [38;5;241m=[39m comparison[38;5;241m.[39mloc[[38;5;124m'[39m[38;5;124mRisk_factor_obese_2018[39m[38;5;124m'[39m]
-[1;32m     20[0m [38;5;66;03m# Create the interactive bar plot[39;00m
-[0;32m---> 21[0m fig [38;5;241m=[39m [43mgo[49m[38;5;241m.[39mFigure(data[38;5;241m=[39m[
-[1;32m     22[0m     go[38;5;241m.[39mBar(name[38;5;241m=[39m[38;5;124m'[39m[38;5;124mWith Policy[39m[38;5;124m'[39m, x[38;5;241m=[39m[[38;5;124m'[39m[38;5;124mWith Policy[39m[38;5;124m'[39m], y[38;5;241m=[39m[obese_comparison_salt[[38;5;124m'[39m[38;5;124mWith Policy[39m[38;5;124m'[39m]], marker_color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mblue[39m[38;5;124m'[39m),
-[1;32m     23[0m     go[38;5;241m.[39mBar(name[38;5;241m=[39m[38;5;124m'[39m[38;5;124mWithout Policy[39m[38;5;124m'[39m, x[38;5;241m=[39m[[38;5;124m'[39m[38;5;124mWithout Policy[39m[38;5;124m'[39m], y[38;5;241m=[39m[obese_comparison_salt[[38;5;124m'[39m[38;5;124mWithout Policy[39m[38;5;124m'[39m]], marker_color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mred[39m[38;5;124m'[39m)
-[1;32m     24[0m ])
-[1;32m     26[0m [38;5;66;03m# Update layout for better visualization[39;00m
-[1;32m     27[0m fig[38;5;241m.[39mupdate_layout(
-[1;32m     28[0m     title[38;5;241m=[39m[38;5;124m'[39m[38;5;124mComparison of Deaths caused by Obesity with and without Salt Legislation Policy[39m[38;5;124m'[39m,
-[1;32m     29[0m     yaxis_title[38;5;241m=[39m[38;5;124m'[39m[38;5;124mMean Amount of Deaths[39m[38;5;124m'[39m,
-[0;32m   (...)[0m
-[1;32m     32[0m     xaxis_tickangle[38;5;241m=[39m[38;5;241m0[39m
-[1;32m     33[0m )
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+File [0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexes/base.py:3805[0m, in [0;36mIndex.get_loc[0;34m(self, key)[0m
+[1;32m   3804[0m [38;5;28;01mtry[39;00m:
+[0;32m-> 3805[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_engine[49m[38;5;241;43m.[39;49m[43mget_loc[49m[43m([49m[43mcasted_key[49m[43m)[49m
+[1;32m   3806[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m err:
 
-[0;31mNameError[0m: name 'go' is not defined
+File [0;32mindex.pyx:167[0m, in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
+
+File [0;32mindex.pyx:196[0m, in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
+
+File [0;32mpandas/_libs/hashtable_class_helper.pxi:7081[0m, in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[0;34m()[0m
+
+File [0;32mpandas/_libs/hashtable_class_helper.pxi:7089[0m, in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[0;34m()[0m
+
+[0;31mKeyError[0m: 'trans_fatty_acids_policy'
+
+The above exception was the direct cause of the following exception:
+
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+Cell [0;32mIn[5], line 3[0m
+[1;32m      1[0m [38;5;66;03m#Click to see code[39;00m
+[1;32m      2[0m [38;5;66;03m# Creating a column to indicate whether a country has health policies (either salt legislation or trans fatty acids policy)[39;00m
+[0;32m----> 3[0m data[[38;5;124m'[39m[38;5;124mhealth_policy[39m[38;5;124m'[39m] [38;5;241m=[39m [43mdata[49m[38;5;241;43m.[39;49m[43mapply[49m[43m([49m[38;5;28;43;01mlambda[39;49;00m[43m [49m[43mrow[49m[43m:[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mYes[39;49m[38;5;124;43m'[39;49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mrow[49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43msalt_legislation_policy[39;49m[38;5;124;43m'[39;49m[43m][49m[43m [49m[38;5;241;43m==[39;49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mYes[39;49m[38;5;124;43m'[39;49m[43m [49m[38;5;129;43;01mor[39;49;00m[43m [49m[43mrow[49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mtrans_fatty_acids_policy[39;49m[38;5;124;43m'[39;49m[43m][49m[43m [49m[38;5;241;43m==[39;49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mYes[39;49m[38;5;124;43m'[39;49m[43m [49m[38;5;28;43;01melse[39;49;00m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mNo[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43maxis[49m[38;5;241;43m=[39;49m[38;5;241;43m1[39;49m[43m)[49m
+[1;32m      5[0m [38;5;66;03m# Plotting GDP per capita against the presence of health policies[39;00m
+[1;32m      6[0m plt[38;5;241m.[39mfigure(figsize[38;5;241m=[39m([38;5;241m10[39m, [38;5;241m6[39m))
+
+File [0;32m~/.local/lib/python3.10/site-packages/pandas/core/frame.py:10374[0m, in [0;36mDataFrame.apply[0;34m(self, func, axis, raw, result_type, args, by_row, engine, engine_kwargs, **kwargs)[0m
+[1;32m  10360[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapply[39;00m [38;5;28;01mimport[39;00m frame_apply
+[1;32m  10362[0m op [38;5;241m=[39m frame_apply(
+[1;32m  10363[0m     [38;5;28mself[39m,
+[1;32m  10364[0m     func[38;5;241m=[39mfunc,
+[0;32m   (...)[0m
+[1;32m  10372[0m     kwargs[38;5;241m=[39mkwargs,
+[1;32m  10373[0m )
+[0;32m> 10374[0m [38;5;28;01mreturn[39;00m [43mop[49m[38;5;241;43m.[39;49m[43mapply[49m[43m([49m[43m)[49m[38;5;241m.[39m__finalize__([38;5;28mself[39m, method[38;5;241m=[39m[38;5;124m"[39m[38;5;124mapply[39m[38;5;124m"[39m)
+
+File [0;32m~/.local/lib/python3.10/site-packages/pandas/core/apply.py:916[0m, in [0;36mFrameApply.apply[0;34m(self)[0m
+[1;32m    913[0m [38;5;28;01melif[39;00m [38;5;28mself[39m[38;5;241m.[39mraw:
+[1;32m    914[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mapply_raw(engine[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mengine, engine_kwargs[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mengine_kwargs)
+[0;32m--> 916[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mapply_standard[49m[43m([49m[43m)[49m
+
+File [0;32m~/.local/lib/python3.10/site-packages/pandas/core/apply.py:1063[0m, in [0;36mFrameApply.apply_standard[0;34m(self)[0m
+[1;32m   1061[0m [38;5;28;01mdef[39;00m [38;5;21mapply_standard[39m([38;5;28mself[39m):
+[1;32m   1062[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mengine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mpython[39m[38;5;124m"[39m:
+[0;32m-> 1063[0m         results, res_index [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mapply_series_generator[49m[43m([49m[43m)[49m
+[1;32m   1064[0m     [38;5;28;01melse[39;00m:
+[1;32m   1065[0m         results, res_index [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mapply_series_numba()
+
+File [0;32m~/.local/lib/python3.10/site-packages/pandas/core/apply.py:1081[0m, in [0;36mFrameApply.apply_series_generator[0;34m(self)[0m
+[1;32m   1078[0m [38;5;28;01mwith[39;00m option_context([38;5;124m"[39m[38;5;124mmode.chained_assignment[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m):
+[1;32m   1079[0m     [38;5;28;01mfor[39;00m i, v [38;5;129;01min[39;00m [38;5;28menumerate[39m(series_gen):
+[1;32m   1080[0m         [38;5;66;03m# ignore SettingWithCopy here in case the user mutates[39;00m
+[0;32m-> 1081[0m         results[i] [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mfunc[49m[43m([49m[43mv[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1082[0m         [38;5;28;01mif[39;00m [38;5;28misinstance[39m(results[i], ABCSeries):
+[1;32m   1083[0m             [38;5;66;03m# If we have a view on v, we need to make a copy because[39;00m
+[1;32m   1084[0m             [38;5;66;03m#  series_generator will swap out the underlying data[39;00m
+[1;32m   1085[0m             results[i] [38;5;241m=[39m results[i][38;5;241m.[39mcopy(deep[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+
+Cell [0;32mIn[5], line 3[0m, in [0;36m<lambda>[0;34m(row)[0m
+[1;32m      1[0m [38;5;66;03m#Click to see code[39;00m
+[1;32m      2[0m [38;5;66;03m# Creating a column to indicate whether a country has health policies (either salt legislation or trans fatty acids policy)[39;00m
+[0;32m----> 3[0m data[[38;5;124m'[39m[38;5;124mhealth_policy[39m[38;5;124m'[39m] [38;5;241m=[39m data[38;5;241m.[39mapply([38;5;28;01mlambda[39;00m row: [38;5;124m'[39m[38;5;124mYes[39m[38;5;124m'[39m [38;5;28;01mif[39;00m row[[38;5;124m'[39m[38;5;124msalt_legislation_policy[39m[38;5;124m'[39m] [38;5;241m==[39m [38;5;124m'[39m[38;5;124mYes[39m[38;5;124m'[39m [38;5;129;01mor[39;00m [43mrow[49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mtrans_fatty_acids_policy[39;49m[38;5;124;43m'[39;49m[43m][49m [38;5;241m==[39m [38;5;124m'[39m[38;5;124mYes[39m[38;5;124m'[39m [38;5;28;01melse[39;00m [38;5;124m'[39m[38;5;124mNo[39m[38;5;124m'[39m, axis[38;5;241m=[39m[38;5;241m1[39m)
+[1;32m      5[0m [38;5;66;03m# Plotting GDP per capita against the presence of health policies[39;00m
+[1;32m      6[0m plt[38;5;241m.[39mfigure(figsize[38;5;241m=[39m([38;5;241m10[39m, [38;5;241m6[39m))
+
+File [0;32m~/.local/lib/python3.10/site-packages/pandas/core/series.py:1121[0m, in [0;36mSeries.__getitem__[0;34m(self, key)[0m
+[1;32m   1118[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_values[key]
+[1;32m   1120[0m [38;5;28;01melif[39;00m key_is_scalar:
+[0;32m-> 1121[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_get_value[49m[43m([49m[43mkey[49m[43m)[49m
+[1;32m   1123[0m [38;5;66;03m# Convert generator to list before going through hashable part[39;00m
+[1;32m   1124[0m [38;5;66;03m# (We will iterate through the generator there to check for slices)[39;00m
+[1;32m   1125[0m [38;5;28;01mif[39;00m is_iterator(key):
+
+File [0;32m~/.local/lib/python3.10/site-packages/pandas/core/series.py:1237[0m, in [0;36mSeries._get_value[0;34m(self, label, takeable)[0m
+[1;32m   1234[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_values[label]
+[1;32m   1236[0m [38;5;66;03m# Similar to Index.get_value, but we do not fall back to positional[39;00m
+[0;32m-> 1237[0m loc [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mindex[49m[38;5;241;43m.[39;49m[43mget_loc[49m[43m([49m[43mlabel[49m[43m)[49m
+[1;32m   1239[0m [38;5;28;01mif[39;00m is_integer(loc):
+[1;32m   1240[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_values[loc]
+
+File [0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexes/base.py:3812[0m, in [0;36mIndex.get_loc[0;34m(self, key)[0m
+[1;32m   3807[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(casted_key, [38;5;28mslice[39m) [38;5;129;01mor[39;00m (
+[1;32m   3808[0m         [38;5;28misinstance[39m(casted_key, abc[38;5;241m.[39mIterable)
+[1;32m   3809[0m         [38;5;129;01mand[39;00m [38;5;28many[39m([38;5;28misinstance[39m(x, [38;5;28mslice[39m) [38;5;28;01mfor[39;00m x [38;5;129;01min[39;00m casted_key)
+[1;32m   3810[0m     ):
+[1;32m   3811[0m         [38;5;28;01mraise[39;00m InvalidIndexError(key)
+[0;32m-> 3812[0m     [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m(key) [38;5;28;01mfrom[39;00m [38;5;21;01merr[39;00m
+[1;32m   3813[0m [38;5;28;01mexcept[39;00m [38;5;167;01mTypeError[39;00m:
+[1;32m   3814[0m     [38;5;66;03m# If we have a listlike key, _check_indexing_error will raise[39;00m
+[1;32m   3815[0m     [38;5;66;03m#  InvalidIndexError. Otherwise we fall through and re-raise[39;00m
+[1;32m   3816[0m     [38;5;66;03m#  the TypeError.[39;00m
+[1;32m   3817[0m     [38;5;28mself[39m[38;5;241m.[39m_check_indexing_error(key)
+
+[0;31mKeyError[0m: 'trans_fatty_acids_policy'
 
