@@ -6,4 +6,5 @@ root: docs/home
 chapters:
 - file: docs/Dataset and Preprocessing
 - file: docs/notebook
+- file: docs/Reflectie
 - file: docs/Work Distribution
